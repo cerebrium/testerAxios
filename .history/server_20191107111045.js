@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
         }})
     }).then(responseTwo => {
         console.log('-----------------------   Second Step')
-            console.log(responseTwo)
+            console.log(response.data)
         })
         .catch(err => {
         console.log(err.response)

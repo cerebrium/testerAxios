@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
         axios.get('https://api.petfinder.com/v2/animals', {headers: {
             Authorization: `Bearer ${token}`
         }})
-    }).then(responseTwo => {
+    }).then(response => {
         console.log('-----------------------   Second Step')
-            console.log(responseTwo)
+            console.log(response.data)
         })
         .catch(err => {
         console.log(err.response)

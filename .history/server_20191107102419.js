@@ -13,16 +13,12 @@ app.get('/', (req, res) => {
     }
     axios.post('https://api.petfinder.com/v2/oauth2/token', config)
     .then(response => {
-        console.log(response.data.access_token)
-        var token = response.data.access_token
-        axios.get('https://api.petfinder.com/v2/animals', {headers: {
-            Authorization: `Bearer ${token}`
+        console.log('------------------------------------------------------')
+        config.Bearer = response.data.access_token
+        axios.get('https://api.petfinder.com/v2/animals?type=dog&page=2', {Authorization: {
+            Bearer: config.bearer
         }})
-    }).then(responseTwo => {
-        console.log('-----------------------   Second Step')
-            console.log(responseTwo)
-        })
-        .catch(err => {
+    }).catch(err => {
         console.log(err.response)
     })
     res.send('Home')
