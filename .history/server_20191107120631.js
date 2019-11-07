@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
             Authorization: `Bearer ${token}`
         }}).then(response => {
             console.log('-----------------------   Second Step')
-            console.log(response.data)
-            res.send(response.data)
+            console.log(response.animals)
     })
     })
     .catch(err => {
         console.log(err.response)
     })
+    res.send('here')
 })
 
 app.listen(3000)

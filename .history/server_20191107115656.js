@@ -14,18 +14,17 @@ app.get('/', (req, res) => {
     axios.post('https://api.petfinder.com/v2/oauth2/token', config)
     .then(response => {
         var token = response.data.access_token
-        console.log(response)
-        axios.get('https://api.petfinder.com/v2/animals', {headers: {
+        axios.get('https://api.petfinder.com/v2/animals?type=dog&page=2', {headers: {
             Authorization: `Bearer ${token}`
-        }}).then(response => {
-            console.log('-----------------------   Second Step')
-            console.log(response.data)
-            res.send(response.data)
-    })
+        }})
+    }).then(response => {
+        console.log(response.animals)
+        console.log('-----------------------   Second Step')
     })
     .catch(err => {
         console.log(err.response)
     })
+    res.send('here')
 })
 
 app.listen(3000)

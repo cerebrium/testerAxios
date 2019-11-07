@@ -20,12 +20,12 @@ app.get('/', (req, res) => {
         }}).then(response => {
             console.log('-----------------------   Second Step')
             console.log(response.data)
-            res.send(response.data)
     })
     })
     .catch(err => {
         console.log(err.response)
     })
+    res.send('here')
 })
 
 app.listen(3000)
